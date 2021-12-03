@@ -7,9 +7,11 @@
 # 如果你的OP是当主路由的话，网关、DNS、广播都不需要，代码前面加 # 注释掉，只保留后台地址和子网掩码就可以
 # 如果你有编译ipv6的话，‘去掉LAN口使用内置的 IPv6 管理’代码前面也加 # 注释掉
 
+rm -rf package/lean/luci-theme-argon
 git clone https://github.com/kenzok8/small.git package
 git clone https://github.com/kenzok8/openwrt-packages package
-git clone https://github.com/small-5/luci-app-adblock-plus package\adblockplus
+git clone https://github.com/small-5/luci-app-adblock-plus package/adblockplus
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean
 
 cat >$NETIP <<-EOF
 uci set network.lan.ipaddr='10.1.1.1'                                    # IPv4 地址(openwrt后台地址)
